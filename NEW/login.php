@@ -132,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           background-color: #fff;
           border:2px solid #B4d7ff;
           outline: 0;
-          box-shadow: none;
+          
       }
       
       .btn {
@@ -173,7 +173,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
 
                 <div class="form-group pt-1">
-                    <button type="submit" class="btn btn-primary">Log In</button>
+                    <button type="submit" class="btn btn-primary btn-block">Log In</button>
                 </div>
 
                 <p class="small-xl pt-3 text-center">

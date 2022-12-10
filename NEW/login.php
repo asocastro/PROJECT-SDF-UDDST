@@ -98,13 +98,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
     <style>
       body {
-        background: #194c7f !important;
+        background: #Fbf3e4 !important;
         font-family: 'Muli', sans-serif;
         
       }
 
       h1 {
-        color: #fff;
+        color: #000;
         padding-top: 2rem;
         padding-bottom: 1rem;
         font-weight: bold;
@@ -112,38 +112,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       h2 {
         font-weight: bold;
         padding-top: 1rem;
-        color: #fff;
+        color: #000;
       }
 
       a {
-        color: #333;
+        color: #000;
       }
 
       p {
-        color: #fff;
+        color: #000;
       }
 
       a:hover {
-        color: #194c7f;
+        color: #D4ddb7;
         text-decoration: none;
       }
 
       .form-control:focus {
           color: #000;
           background-color: #fff;
-          border:2px solid #194c7f;
+          border:2px solid #D4ddb7;
           outline: 0;
           box-shadow: none;
       }
       
       .btn {
-        background: #194c7f;
-        border: #194c7f;
+        background: #D4ddb7;
+        border: #D4ddb7;
       }
 
       .btn:hover {
-        background: #194c7f;
-        border: #194c7f;
+        background: #D4ddb7;
+        border: #D4ddb7;
       }
     </style>
 </head>

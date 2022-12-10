@@ -77,20 +77,34 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         && empty($renewaldate_err) && empty($paymentportal_err) && empty($remarks_err)
     ) {
         // Prepare an insert statement
-        $sql = "INSERT INTO userdata (category, subscription, serviceprovider, amount, renewaldate, paymentportal, remarks) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "UPDATE userdata SET category=?, subscription=?, 
+        serviceprovider=?, amount=?, renewaldate=?, paymentportal=?, remarks=? WHERE id=?";
+        //$sql = "UPDATE employees SET name=?, address=?, salary=? WHERE id=?";
+        /*
+        if ($stmt = $mysqli->prepare($sql)) {
+            // Bind variables to the prepared statement as parameters
+            $stmt->bind_param("sssi", $param_name, $param_address, $param_salary, $param_id);
 
+            // Set parameters
+            $param_name = $name;
+            $param_address = $address;
+            $param_salary = $salary;
+            $param_id = $id;
+
+            // Attempt to execute the prepared statement
+            if ($stmt->execute()) {
+                // Records updated successfully. Redirect to landing page
+                header("location: index.php");
+                exit();
+            } else {
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }*/
         if ($stmt = $mysqli->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
             $stmt->bind_param(
-                "sssssss",
-                $param_category,
-                $param_subscription,
-                $param_serviceprovider,
-                $param_amount,
-                $param_renewaldate,
-                $param_paymentportal,
-                $param_remarks
-            );
+                "sssisssi", $param_category, $param_subscription, $param_serviceprovider, $param_amount,
+                $param_renewaldate, $param_paymentportal, $param_remarks, $param_id);
 
             // Set parameters
             $param_category = $category;
@@ -100,6 +114,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
             $param_renewaldate = $renewaldate;
             $param_paymentportal = $paymentportal;
             $param_remarks = $remarks;
+            $param_id = $id;
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
@@ -261,7 +276,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 
                         <input type="hidden" name="id" value="<?php echo $id; ?>" />
                         <input type="submit" class="btn btn-primary" value="Submit">
-                        <a href="index.php" class="btn btn-secondary ml-2">Cancel</a>
+                        <a href="dashboard.php" class="btn btn-secondary ml-2">Cancel</a>
                     </form>
                 </div>
             </div>

@@ -150,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="pt-5">
   <h1 class="text-center">Utility Due Date and Subscription Tracker</h1>
-  <h1 class="text-center">Login</h1>
+  <h2 class="text-center">Login</h2>
   <p class="text-center">Please fill in your credentials to login.</p>
     <div class="container">
     <div class="row">

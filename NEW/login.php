@@ -104,31 +104,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
       h1{
         color: #fff;
-        padding-top: 2rem;
+        padding-top: 3rem;
         font-weight: bold;
       }
       a{
         color: #333;
       }
       a:hover{
-        color: #E8D426;
+        color: #194c7f;
         text-decoration: none;
       }
       .form-control:focus {
           color: #000;
           background-color: #fff;
-          border:2px solid #E8D426;
+          border:2px solid #194c7f;
           outline: 0;
           box-shadow: none;
       }
       
       .btn{
-        background: #E8D426;
-        border: #E8D426;
+        background: #194c7f;
+        border: #194c7f;
       }
       .btn:hover {
-        background: #E8D426;
-        border: #E8D426;
+        background: #194c7f;
+        border: #194c7f;
       }
     </style>
 </head>

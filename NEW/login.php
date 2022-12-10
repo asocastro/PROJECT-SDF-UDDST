@@ -105,8 +105,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       h1 {
         color: #fff;
-        padding-top: 4rem;
+        padding-top: 3rem;
         font-weight: bold;
+      }
+      h2 {
+        font-weight: bold;
+        padding-top: 1rem;
+        color: #fff;
       }
 
       a {
@@ -145,6 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="pt-5">
   <h1 class="text-center">Utility Due Date and Subscription Tracker</h1>
+  <h1 class="text-center">Login</h1>
   <p class="text-center">Please fill in your credentials to login.</p>
     <div class="container">
     <div class="row">
@@ -176,7 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <p class="small-xl pt-3 text-center">
                     <span class= "text-muted">Don't have an account? </span>
-                    <a href="register.php">Sign up now</a>
+                    <a href="register.php"><b>Sign up now</b></a>
                 </p>
         </form>
     </div>

@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username_err = "Username can only contain letters, numbers, and underscores.";
     } else {
         // Prepare a select statement
-        $sql = "SELECT userid FROM users WHERE username = ?";
+        $sql = "SELECT id FROM users WHERE username = ?";
 
         if ($stmt = $mysqli->prepare($sql)) {
             // Bind variables to the prepared statement as parameters

@@ -5,7 +5,7 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
     require_once "config.php";
 
     // Prepare a select statement
-    $sql = "SELECT * FROM employees WHERE id = ?";
+    $sql = "SELECT * FROM userdata WHERE id = ?";
 
     if ($stmt = $mysqli->prepare($sql)) {
         // Bind variables to the prepared statement as parameters
@@ -24,9 +24,14 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
                 $row = $result->fetch_array(MYSQLI_ASSOC);
 
                 // Retrieve individual field value
-                $name = $row["name"];
-                $address = $row["address"];
-                $salary = $row["salary"];
+                $category = $row["category"];
+                $subscription = $row["subscription"];
+                $serviceprovider = $row["serviceprovider"];
+                $amount = $row["amount"];
+                $renewaldate = $row["renewaldate"];
+                $paymentportal = $row["paymentportal"];
+                $remarks = $row["remarks"];
+                
             } else {
                 // URL doesn't contain valid id parameter. Redirect to error page
                 header("location: error.php");
@@ -71,18 +76,34 @@ if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
                 <div class="col-md-12">
                     <h1 class="mt-5 mb-3">View Record</h1>
                     <div class="form-group">
-                        <label>Name</label>
-                        <p><b><?php echo $row["name"]; ?></b></p>
+                        <label>Category</label>
+                        <p><b><?php echo $row["category"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Address</label>
-                        <p><b><?php echo $row["address"]; ?></b></p>
+                        <label>Subscription</label>
+                        <p><b><?php echo $row["subscription"]; ?></b></p>
                     </div>
                     <div class="form-group">
-                        <label>Salary</label>
-                        <p><b><?php echo $row["salary"]; ?></b></p>
+                        <label>Service Provider</label>
+                        <p><b><?php echo $row["serviceprovider"]; ?></b></p>
                     </div>
-                    <p><a href="index.php" class="btn btn-primary">Back</a></p>
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <p><b><?php echo $row["amount"]; ?></b></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Renewal Date</label>
+                        <p><b><?php echo $row["renewaldate"]; ?></b></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Portal</label>
+                        <p><b><?php echo $row["paymentportal"]; ?></b></p>
+                    </div>
+                    <div class="form-group">
+                        <label>Remarks</label>
+                        <p><b><?php echo $row["remarks"]; ?></b></p>
+                    </div>
+                    <p><a href="dashboard.php" class="btn btn-primary">Back</a></p>
                 </div>
             </div>
         </div>

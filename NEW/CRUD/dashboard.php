@@ -50,6 +50,7 @@
                             echo '<table class="table table-bordered table-striped">';
                             echo "<thead>";
                             echo "<tr>";
+                            echo "<th>ID</th>";
                             echo "<th>Category</th>";
                             echo "<th>Subscription Name</th>";
                             echo "<th>Service Provider</th>";
@@ -63,6 +64,7 @@
                             echo "<tbody>";
                             while ($row = $result->fetch_array()) {
                                 echo "<tr>";
+                                echo "<td>" . $row['id'] . "</td>";
                                 echo "<td>" . $row['category'] . "</td>";
                                 echo "<td>" . $row['subscription'] . "</td>";
                                 echo "<td>" . $row['serviceprovider'] . "</td>";

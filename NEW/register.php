@@ -166,8 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="form-group pt-1">
-                    <button type="submit" class="btn btn-primary btn-block">Log In</button>
-                    <button type="reset" class="btn btn-seondary ml-2">Reset</button>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </div>
             
             <p class="small-xl pt-3 text-center">

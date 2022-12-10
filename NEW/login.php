@@ -97,8 +97,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
     <style>
-        body{
-        background: #E8D426 !important;
+      body{
+        background: #194c7f !important;
         font-family: 'Muli', sans-serif;
         
       }

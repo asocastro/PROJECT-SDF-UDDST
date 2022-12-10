@@ -124,24 +124,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
 
       a:hover {
-        color: #B4d7ff;
+        color: #4984ae;
         text-decoration: none;
       }
       .form-control:focus {
           color: #000;
           background-color: #fff;
-          border:2px solid #B4d7ff;
+          border:2px solid #4984ae;
           outline: 0;
           box-shadow: none;
       }
       
       .btn {
-        background: #B4d7ff;
-        border: #B4d7ff;
+        background: #4984ae;
+        border: #4984ae;
       }
       .btn:hover {
-        background: #B4d7ff;
-        border: #B4d7ff;
+        background: #4984ae;
+        border: #4984ae;
       }
     </style>
 </head>

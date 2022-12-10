@@ -123,10 +123,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         color: #000;
       }
 
-      
+      a:hover {
+        color: #B4d7ff;
+        text-decoration: none;
+      }
       .form-control:focus {
           color: #000;
-          background-color: #fff;
+          
           border:2px solid #B4d7ff;
           outline: 0;
           box-shadow: none;
@@ -157,7 +160,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 ?>
                 <div class="form-group">
-                    <label>Please fill in your credentials to login.</label>
+                    <label class="text-center">Please fill in your credentials to login.</label>
                     
                  </div>
                 <form id="submitForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">

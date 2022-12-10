@@ -31,35 +31,47 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="mt-5 mb-1 clearfix">
+                        <h3>USER TEST</h3>
+                        <h5>Your subscriptions are below:</h5>
+                    </div>
                     <div class="mt-5 mb-3 clearfix">
-                        <h2 class="pull-left">Employees Details</h2>
-                        <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Employee</a>
+                        <h2 class="pull-left">Subscription Details</h2>
+                        <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add Subscription Tracker</a>
                     </div>
                     <?php
                     // Include config file
                     require_once "config.php";
 
                     // Attempt select query execution
-                    $sql = "SELECT * FROM employees";
+                    $sql = "SELECT * FROM userdata";
                     if ($result = $mysqli->query($sql)) {
                         if ($result->num_rows > 0) {
                             echo '<table class="table table-bordered table-striped">';
                             echo "<thead>";
                             echo "<tr>";
-                            echo "<th>#</th>";
-                            echo "<th>Name</th>";
-                            echo "<th>Address</th>";
-                            echo "<th>Salary</th>";
-                            echo "<th>Action</th>";
+                            echo "<th>ID</th>";
+                            echo "<th>Category</th>";
+                            echo "<th>Subscription Name</th>";
+                            echo "<th>Service Provider</th>";
+                            echo "<th>Amount</th>";
+                            echo "<th>Renewal Date</th>";
+                            echo "<th>Payment Portal</th>";
+                            echo "<th>Remarks</th>";
+                            echo "<th>Actions</th>";
                             echo "</tr>";
                             echo "</thead>";
                             echo "<tbody>";
                             while ($row = $result->fetch_array()) {
                                 echo "<tr>";
                                 echo "<td>" . $row['id'] . "</td>";
-                                echo "<td>" . $row['name'] . "</td>";
-                                echo "<td>" . $row['address'] . "</td>";
-                                echo "<td>" . $row['salary'] . "</td>";
+                                echo "<td>" . $row['category'] . "</td>";
+                                echo "<td>" . $row['subscription'] . "</td>";
+                                echo "<td>" . $row['serviceprovider'] . "</td>";
+                                echo "<td>" . $row['amount'] . "</td>";
+                                echo "<td>" . $row['renewaldate'] . "</td>";
+                                echo "<td>" . $row['paymentportal'] . "</td>";
+                                echo "<td>" . $row['remarks'] . "</td>";
                                 echo "<td>";
                                 echo '<a href="read.php?id=' . $row['id'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
                                 echo '<a href="update.php?id=' . $row['id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';

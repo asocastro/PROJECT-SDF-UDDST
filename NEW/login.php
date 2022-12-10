@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
       h1{
         color: #fff;
-        
+        padding-top: 2rem;
         font-weight: bold;
       }
       a{

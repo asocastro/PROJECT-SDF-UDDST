@@ -105,46 +105,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
     <style>
       body {
-        background: #194c7f !important;
+        background: #Fbf3e4 !important;
         font-family: 'Muli', sans-serif;
-        
       }
 
       h1 {
-        color: #fff;
-        padding-top: 4rem;
+        color: #004d8f;
+        padding-top: 3rem;
+        padding-bottom: 2rem;
         font-weight: bold;
+      }
+      h2 {
+        font-weight: bold;
+        padding-top: 1rem;
+        color: #000;
       }
 
       a {
-        color: #333;
+        color: #000;
       }
 
       p {
-        color: #fff;
+        color: #000;
       }
 
       a:hover {
-        color: #194c7f;
+        color: #004d8f;
         text-decoration: none;
       }
-
       .form-control:focus {
           color: #000;
           background-color: #fff;
-          border:2px solid #194c7f;
+          border:2px solid #004d8f;
           outline: 0;
           box-shadow: none;
       }
       
       .btn {
-        background: #194c7f;
-        border: #194c7f;
+        background: #004d8f;
+        border: #004d8f;
       }
-
       .btn:hover {
-        background: #194c7f;
-        border: #194c7f;
+        background: #004d8f;
+        border: #004d8f;
       }
     </style>
 </head>
@@ -152,11 +155,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="pt-5">
   <h1 class="text-center">Utility Due Date and Subscription Tracker</h1>
-  <p class="text-center">Please fill this form to create an account.</p>
     <div class="container">
     <div class="row">
         <div class="col-md-5 mx-auto">
             <div class="card card-body">
+            <div class="form-group">
+                    <label class="text-center">Please fill this form to create an account.</label>
+                </div>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group required">

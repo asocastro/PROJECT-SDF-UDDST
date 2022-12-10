@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
 
       h1 {
-        color: #000;
+        color: #004d8f;
         padding-top: 2rem;
         padding-bottom: 1rem;
         font-weight: bold;
@@ -124,24 +124,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       }
 
       a:hover {
-        color: #D4ddb7;
+        color: #B4d7ff;
         text-decoration: none;
       }
       .form-control:focus {
           color: #000;
           background-color: #fff;
-          border:2px solid #D4ddb7;
+          border:2px solid #B4d7ff;
           outline: 0;
           box-shadow: none;
       }
       
       .btn {
-        background: #D4ddb7;
-        border: #D4ddb7;
+        background: #B4d7ff;
+        border: #B4d7ff;
       }
       .btn:hover {
-        background: #D4ddb7;
-        border: #D4ddb7;
+        background: #B4d7ff;
+        border: #B4d7ff;
       }
     </style>
 </head>
@@ -159,7 +159,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     echo '<div class="alert alert-danger">' . $login_err . '</div>';
                     }
                 ?>
-
+                <div class="form-group">
+                    <label>Please fill in your credentials to login.</label>
+                    
+                 </div>
                 <form id="submitForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="form-group required">
                     <label>Username</label>
@@ -179,7 +182,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <p class="small-xl pt-3 text-center">
                     <span class= "text-muted">Don't have an account? </span>
-                    <a href="register.php">Sign up now</a>
+                    <a href="register.php">Sign up now.</a>
                 </p>
         </form>
     </div>

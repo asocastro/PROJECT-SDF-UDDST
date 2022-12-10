@@ -105,8 +105,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       h1 {
         color: #004d8f;
-        padding-top: 2rem;
-        padding-bottom: 1rem;
+        padding-top: 3rem;
+        padding-bottom: 2rem;
         font-weight: bold;
       }
       h2 {
@@ -123,10 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         color: #000;
       }
 
-      a:hover {
-        color: #B4d7ff;
-        text-decoration: none;
-      }
+      
       .form-control:focus {
           color: #000;
           background-color: #fff;
@@ -182,7 +179,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <p class="small-xl pt-3 text-center">
                     <span class= "text-muted">Don't have an account? </span>
-                    <a href="register.php">Sign up now.</a>
+                    <a href="register.php"><b>Sign up now.</b></a>
                 </p>
         </form>
     </div>

@@ -97,23 +97,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
     <style>
-      body{
+      body {
         background: #194c7f !important;
         font-family: 'Muli', sans-serif;
         
       }
-      h1{
+
+      h1 {
         color: #fff;
-        padding-top: 3rem;
+        padding-top: 4rem;
         font-weight: bold;
       }
-      a{
+
+      a {
         color: #333;
       }
-      a:hover{
+
+      p {
+        color: #fff;
+      }
+
+      a:hover {
         color: #194c7f;
         text-decoration: none;
       }
+
       .form-control:focus {
           color: #000;
           background-color: #fff;
@@ -122,10 +130,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           box-shadow: none;
       }
       
-      .btn{
+      .btn {
         background: #194c7f;
         border: #194c7f;
       }
+
       .btn:hover {
         background: #194c7f;
         border: #194c7f;

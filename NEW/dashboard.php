@@ -39,7 +39,7 @@ session_start();
                     <div class="mt-5 mb-1 clearfix">
                     <h3>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h3>
                         <a href="logout.php" 
-                        class="btn btn-success pull-right"><i class="fa fa-plus"></i> Logout</a>
+                        class="btn btn-warning pull-right"><i class="fa fa-plus"></i> Logout</a>
                         <h5>Your subscriptions are below:</h5>
                     </div>
                     <div class="mt-5 mb-3 clearfix">

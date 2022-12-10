@@ -97,7 +97,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
     <style>
-<<<<<<< Updated upstream
       body {
         background: #Fbf3e4 !important;
         font-family: 'Muli', sans-serif;
@@ -126,55 +125,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
       a:hover {
         color: #D4ddb7;
-=======
-        body{
-        background: #E8D426 !important;
-        font-family: 'Muli', sans-serif;
-        
-      }
-      h1{
-        color: #fff;
-        padding-bottom: 2rem;
-        font-weight: bold;
-      }
-      a{
-        color: #333;
-      }
-      a:hover{
-        color: #E8D426;
->>>>>>> Stashed changes
         text-decoration: none;
       }
       .form-control:focus {
           color: #000;
           background-color: #fff;
-<<<<<<< Updated upstream
           border:2px solid #D4ddb7;
-=======
-          border:2px solid #E8D426;
->>>>>>> Stashed changes
           outline: 0;
           box-shadow: none;
       }
       
-<<<<<<< Updated upstream
       .btn {
         background: #D4ddb7;
         border: #D4ddb7;
-=======
-      .btn{
-        background: #E8D426;
-        border: #E8D426;
->>>>>>> Stashed changes
       }
       .btn:hover {
-<<<<<<< Updated upstream
         background: #D4ddb7;
         border: #D4ddb7;
-=======
-        background: #E8D426;
-        border: #E8D426;
->>>>>>> Stashed changes
       }
     </style>
 </head>

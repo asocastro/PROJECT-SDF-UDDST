@@ -1,7 +1,14 @@
 <?php
+session_start();
 // Include config file
 require_once "config.php";
-
+/*
+// Check if the user is logged in, if not then redirect him to login page
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
+}
+*/
 // Define variables and initialize with empty values
 $category = $subscription = $serviceprovider = $amount = $renewaldate = $paymentportal = $remarks = "";
 $category_err = $subscription_err = $serviceprovider_err =  $amount_err =  $renewaldate_err = $paymentportal_err = $remarks_err = "";
@@ -72,12 +79,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($category_err) && empty($subscription_err) && empty($serviceprovider_err) && empty($amount_err) 
     && empty($renewaldate_err) && empty($paymentportal_err) && empty($remarks_err)) {
         // Prepare an insert statement
-        $sql = "INSERT INTO userdata (category, subscription, serviceprovider, amount, renewaldate, paymentportal, remarks) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO userdata (category, subscription, serviceprovider, amount, renewaldate, paymentportal, remarks,userid) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
 
         if ($stmt = $mysqli->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssisss", $param_category, $param_subscription, $param_serviceprovider, 
-            $param_amount, $param_renewaldate, $param_paymentportal, $param_remarks);
+            $stmt->bind_param("sssissss", $param_category, $param_subscription, $param_serviceprovider, 
+            $param_amount, $param_renewaldate, $param_paymentportal, $param_remarks,$param_userid);
 
             // Set parameters
             $param_category = $category;
@@ -87,6 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_renewaldate = $renewaldate;
             $param_paymentportal = $paymentportal;
             $param_remarks = $remarks;
+            $param_userid = $_SESSION["userid"];
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {

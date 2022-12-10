@@ -1,3 +1,14 @@
+<?php
+// Initialize the session
+session_start();
+
+// Check if the user is logged in, if not then redirect him to login page
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +43,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-1 clearfix">
-                        <h3>USER TEST</h3>
+                        <h3>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h3>
+                        <a href="logout.php" 
+                        class="btn btn-success pull-right"><i class="fa fa-plus"></i> Logout</a>
                         <h5>Your subscriptions are below:</h5>
                     </div>
                     <div class="mt-5 mb-3 clearfix">
@@ -43,8 +56,9 @@
                     // Include config file
                     require_once "config.php";
 
+                    $x = $_SESSION["userid"];
                     // Attempt select query execution
-                    $sql = "SELECT * FROM userdata";
+                    $sql = "SELECT * FROM userdata WHERE userid=x";
                     if ($result = $mysqli->query($sql)) {
                         if ($result->num_rows > 0) {
                             echo '<table class="table table-bordered table-striped">';

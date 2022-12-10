@@ -105,50 +105,46 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
     <style>
       body {
-        background: #Fbf3e4 !important;
+        background: #194c7f !important;
         font-family: 'Muli', sans-serif;
         
       }
 
       h1 {
-        color: #004d8f;
-        padding-top: 3rem;
-        padding-bottom: 2rem;
+        color: #fff;
+        padding-top: 4rem;
         font-weight: bold;
-      }
-      h2 {
-        font-weight: bold;
-        padding-top: 1rem;
-        color: #000;
       }
 
       a {
-        color: #000;
+        color: #333;
       }
 
       p {
-        color: #000;
+        color: #fff;
       }
 
       a:hover {
-        color: #B4d7ff;
+        color: #194c7f;
         text-decoration: none;
       }
+
       .form-control:focus {
           color: #000;
           background-color: #fff;
-          border:2px solid #B4d7ff;
+          border:2px solid #194c7f;
           outline: 0;
           box-shadow: none;
       }
       
       .btn {
-        background: #B4d7ff;
-        border: #B4d7ff;
+        background: #194c7f;
+        border: #194c7f;
       }
+
       .btn:hover {
-        background: #B4d7ff;
-        border: #B4d7ff;
+        background: #194c7f;
+        border: #194c7f;
       }
     </style>
 </head>
@@ -156,14 +152,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <div class="pt-5">
   <h1 class="text-center">Utility Due Date and Subscription Tracker</h1>
+  <p class="text-center">Please fill this form to create an account.</p>
     <div class="container">
     <div class="row">
         <div class="col-md-5 mx-auto">
             <div class="card card-body">
 
-            <div class="form-group">
-                <label class="text-center">Please fill this form to create an account.</label>  
-            </div>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group required">
                 <label>Username</label>
@@ -187,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             <p class="small-xl pt-3 text-center">
                 <span class= "text-muted">Already have an account? </span>
-                <a href="login.php"><b>Login here<b></a>
+                <a href="login.php"><b>Login here.<b></a>
             </p>
         </form>
     </div>

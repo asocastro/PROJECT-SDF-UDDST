@@ -95,44 +95,79 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Muli'>
     <style>
-        body {
-            font: 14px sans-serif;
-        }
-
-        .wrapper {
-            width: 360px;
-            padding: 20px;
-        }
+        body{
+        background: #E8D426 !important;
+        font-family: 'Muli', sans-serif;
+        
+      }
+      h1{
+        color: #fff;
+        padding-bottom: 2rem;
+        font-weight: bold;
+      }
+      a{
+        color: #333;
+      }
+      a:hover{
+        color: #E8D426;
+        text-decoration: none;
+      }
+      .form-control:focus {
+          color: #000;
+          background-color: #fff;
+          border:2px solid #E8D426;
+          outline: 0;
+          box-shadow: none;
+      }
+      
+      .btn{
+        background: #E8D426;
+        border: #E8D426;
+      }
+      .btn:hover {
+        background: #E8D426;
+        border: #E8D426;
+      }
     </style>
 </head>
 
 <body>
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
+<div class="pt-5">
+  <h1 class="text-center">Utility Due Date and Subscription Tracker</h1>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-5 mx-auto">
+            <div class="card card-body">
 
-        <?php
-        if (!empty($login_err)) {
-            echo '<div class="alert alert-danger">' . $login_err . '</div>';
-        }
-        ?>
+                <?php
+                    if (!empty($login_err)) {
+                    echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                    }
+                ?>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_err; ?></span>
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+                <form id="submitForm" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <div class="form-group required">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                </div>
+
+                <div class="form-group required">
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                </div>
+
+                <div class="form-group pt-1">
+                    <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                </div>
+
+                <p class="small-xl pt-3 text-center">
+                    <span class= "text-muted">Don't have an account? </span>
+                    <a href="register.php">Sign up now</a>
+                </p>
         </form>
     </div>
 </body>

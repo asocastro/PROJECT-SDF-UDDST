@@ -61,7 +61,8 @@ $x = $_SESSION["userid"];
         <?php
         $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"] : "category";
         $order = !empty($_GET["order"]) ? $_GET["order"] : "asc";
-        $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"] : "category";
+        $orderAMT = !empty($_GET["orderby"]) ? $_GET["orderby"] : "amount";
+        $orderDate = !empty($_GET["orderby"]) ? $_GET["orderby"] : "renewaldate";
 
 
         $sql = "SELECT * FROM userdata WHERE userid='$x' ORDER BY " . $orderBy . " " . $order;
@@ -69,34 +70,23 @@ $x = $_SESSION["userid"];
         $result = $mysqli->query($sql);
 
         $categoryOrder = "asc";
-        $serviceproviderOrder = "asc";
-        $subscriptionOrder = "asc";
         $amountOrder = "asc";
         $renewaldateOrder = "asc";
-        $paymentportalOrder = "asc";
-        $remarksOrder = "asc";
+
 
         if ($orderBy == "category" && $order == "asc") {
             $categoryOrder = "desc";
         }
-        if ($orderBy == "subscription" && $order == "asc") {
-            $amountOrder = "desc";
-        }
-        if ($orderBy == "serviceprovider" && $order == "asc") {
-            $categoryOrder = "desc";
-        }
+
         if ($orderBy == "amount" && $order == "asc") {
             $amountOrder = "desc";
         }
         if ($orderBy == "renewaldate" && $order == "asc") {
             $categoryOrder = "desc";
+        }else{
+            $categoryOrder = "asc";
         }
-        if ($orderBy == "paymentportal" && $order == "asc") {
-            $amountOrder = "desc";
-        }
-        if ($orderBy == "remarks" && $order == "asc") {
-            $amountOrder = "desc";
-        }
+
 
         ?>
         <table class="table table-bordered">
@@ -104,12 +94,12 @@ $x = $_SESSION["userid"];
                 <tr>
                     <th>ID</th>
                     <th><a href="?orderby=category&order=<?php echo $categoryOrder; ?>">Category</a></th>
-                    <th><a href="?orderby=subscription&order=<?php echo $subscriptionOrder; ?>">Subscription</a></th>
-                    <th><a href="?orderby=category&order=<?php echo $serviceproviderOrder; ?>">Service Provider</a></th>
+                    <th>Subscription</a></th>
+                    <th>Service Provider</a></th>
                     <th><a href="?orderby=amount&order=<?php echo $amountOrder; ?>">Amount</a></th>
-                    <th><a href="?orderby=category&order=<?php echo $renewaldateOrder; ?>">Renewal Date</a></th>
-                    <th><a href="?orderby=category&order=<?php echo $paymentportalOrder; ?>">Payment Portal</a></th>
-                    <th><a href="?orderby=category&order=<?php echo $remarksOrder; ?>">Remarks</a></th>
+                    <th><a href="?orderby=renewaldate&order=<?php echo $renewaldateOrder; ?>">Renewal Date</a></th>
+                    <th>Payment Portal</th>
+                    <th>Remarks</th>
                     <th>Actions</th>
 
                     
@@ -165,61 +155,7 @@ $x = $_SESSION["userid"];
 
 
 
-    <div class="container-md">
-        <?php
-
-        // Attempt select query execution
-        $sql = "SELECT * FROM userdata WHERE userid='$x'";
-        if ($result = $mysqli->query($sql)) {
-            if ($result->num_rows > 0) {
-                echo '<table class="table table-bordered table-striped">';
-                echo "<thead>";
-                echo "<tr>";
-                echo "<th>ID</th>";
-                echo "<th>Category</th>";
-                echo "<th>Subscription Name</th>";
-                echo "<th>Service Provider</th>";
-                echo "<th><a href='sort.php?sort=amount'>Amount</a></th>";
-                echo "<th>Renewal Date</th>";
-                echo "<th>Payment Portal</th>";
-                echo "<th>Remarks</th>";
-                echo "<th>Actions</th>";
-                echo "</tr>";
-                echo "</thead>";
-                echo "<tbody>";
-                while ($row = $result->fetch_array()) {
-                    echo "<tr>";
-                    echo "<td>" . $row['id'] . "</td>";
-                    echo "<td>" . $row['category'] . "</td>";
-                    echo "<td>" . $row['subscription'] . "</td>";
-                    echo "<td>" . $row['serviceprovider'] . "</td>";
-                    echo "<td>" . $row['amount'] . "</td>";
-                    echo "<td>" . $row['renewaldate'] . "</td>";
-                    echo "<td>" . $row['paymentportal'] . "</td>";
-                    echo "<td>" . $row['remarks'] . "</td>";
-                    echo "<td>";
-                    echo '<a href="read.php?id=' . $row['id'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                    echo '<a href="update.php?id=' . $row['id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                    echo '<a href="delete.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
-                    echo "</td>";
-                    echo "</tr>";
-                }
-                echo "</tbody>";
-                echo "</table>";
-                // Free result set
-                $result->free();
-            } else {
-                echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
-            }
-        } else {
-            echo "Oops! Something went wrong. Please try again later.";
-        }
-
-        // Close connection
-        $mysqli->close();
-        ?>
-
-    </div>
+   
 
 </body>
 

@@ -1,16 +1,20 @@
 <?php
+session_start();
 // Include config file
 require_once "config.php";
-
+/*
+// Check if the user is logged in, if not then redirect him to login page
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
+}
+*/
 // Define variables and initialize with empty values
 $category = $subscription = $serviceprovider = $amount = $renewaldate = $paymentportal = $remarks = "";
-$category_err = $subscription_err = $serviceprovider_err = $amount_err = $renewaldate_err = $paymentportal_err = $remarks_err = "";
+$category_err = $subscription_err = $serviceprovider_err =  $amount_err =  $renewaldate_err = $paymentportal_err = $remarks_err = "";
 
 // Processing form data when form is submitted
-if (isset($_POST["id"]) && !empty($_POST["id"])) {
-    // Get hidden input value
-    $id = $_POST["id"];
-
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate category
     $input_category = trim($_POST["category"]);
     if (empty($input_category)) {
@@ -72,39 +76,15 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
     }
 
     // Check input errors before inserting in database
-    if (
-        empty($category_err) && empty($subscription_err) && empty($serviceprovider_err) && empty($amount_err)
-        && empty($renewaldate_err) && empty($paymentportal_err) && empty($remarks_err)
-    ) {
+    if (empty($category_err) && empty($subscription_err) && empty($serviceprovider_err) && empty($amount_err) 
+    && empty($renewaldate_err) && empty($paymentportal_err) && empty($remarks_err)) {
         // Prepare an insert statement
-        $sql = "UPDATE userdata SET category=?, subscription=?, 
-        serviceprovider=?, amount=?, renewaldate=?, paymentportal=?, remarks=? WHERE id=?";
-        //$sql = "UPDATE employees SET name=?, address=?, salary=? WHERE id=?";
-        /*
+        $sql = "INSERT INTO userdata (category, subscription, serviceprovider, amount, renewaldate, paymentportal, remarks,userid) VALUES (?, ?, ?, ?, ?, ?, ?,?)";
+
         if ($stmt = $mysqli->prepare($sql)) {
             // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("sssi", $param_name, $param_address, $param_salary, $param_id);
-
-            // Set parameters
-            $param_name = $name;
-            $param_address = $address;
-            $param_salary = $salary;
-            $param_id = $id;
-
-            // Attempt to execute the prepared statement
-            if ($stmt->execute()) {
-                // Records updated successfully. Redirect to landing page
-                header("location: index.php");
-                exit();
-            } else {
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-        }*/
-        if ($stmt = $mysqli->prepare($sql)) {
-            // Bind variables to the prepared statement as parameters
-            $stmt->bind_param(
-                "sssisssi", $param_category, $param_subscription, $param_serviceprovider, $param_amount,
-                $param_renewaldate, $param_paymentportal, $param_remarks, $param_id);
+            $stmt->bind_param("sssissss", $param_category, $param_subscription, $param_serviceprovider, 
+            $param_amount, $param_renewaldate, $param_paymentportal, $param_remarks,$param_userid);
 
             // Set parameters
             $param_category = $category;
@@ -114,7 +94,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
             $param_renewaldate = $renewaldate;
             $param_paymentportal = $paymentportal;
             $param_remarks = $remarks;
-            $param_id = $id;
+            $param_userid = $_SESSION["userid"];
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
@@ -132,58 +112,6 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 
     // Close connection
     $mysqli->close();
-} else {
-    // Check existence of id parameter before processing further
-    if (isset($_GET["id"]) && !empty(trim($_GET["id"]))) {
-        // Get URL parameter
-        $id = trim($_GET["id"]);
-
-        // Prepare a select statement
-        $sql = "SELECT * FROM userdata WHERE id = ?";
-        if ($stmt = $mysqli->prepare($sql)) {
-            // Bind variables to the prepared statement as parameters
-            $stmt->bind_param("i", $param_id);
-
-            // Set parameters
-            $param_id = $id;
-
-            // Attempt to execute the prepared statement
-            if ($stmt->execute()) {
-                $result = $stmt->get_result();
-
-                if ($result->num_rows == 1) {
-                    /* Fetch result row as an associative array. Since the result set
-                    contains only one row, we don't need to use while loop */
-                    $row = $result->fetch_array(MYSQLI_ASSOC);
-
-                    // Retrieve individual field value
-                    $category = $row["category"];
-                    $subscription = $row["subscription"];
-                    $serviceprovider = $row["serviceprovider"];
-                    $amount = $row["amount"];
-                    $renewaldate = $row["renewaldate"];
-                    $paymentportal = $row["paymentportal"];
-                    $remarks = $row["remarks"];
-                } else {
-                    // URL doesn't contain valid id. Redirect to error page
-                    header("location: error.php");
-                    exit();
-                }
-            } else {
-                echo "Oops! Something went wrong. Please try again later.";
-            }
-        }
-
-        // Close statement
-        $stmt->close();
-
-        // Close connection
-        $mysqli->close();
-    } else {
-        // URL doesn't contain id parameter. Redirect to error page
-        header("location: error.php");
-        exit();
-    }
 }
 ?>
 
@@ -192,7 +120,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
 
 <head>
     <meta charset="UTF-8">
-    <title>Update Record</title>
+    <title>Create Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .wrapper {
@@ -207,9 +135,9 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="mt-5">Update Record</h2>
-                    <p>Please edit the input values and submit to update the employee record.</p>
-                    <form action="<?php echo htmlspecialchars(basename($_SERVER['REQUEST_URI'])); ?>" method="post">
+                    <h2 class="mt-5">Create Record</h2>
+                    <p>Please fill this form and submit to add employee record to the database.</p>
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group">
                             <label>Category</label>
                             <input type="text" name="category"
@@ -238,7 +166,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                             </span>
                         </div>
                         <div class="form-group">
-                            <label>Amount</label>
+                            <label>Amount to Pay</label>
                             <input type="text" name="amount"
                                 class="form-control <?php echo (!empty($amount_err)) ? 'is-invalid' : ''; ?>"
                                 value="<?php echo $amount; ?>">
@@ -248,34 +176,19 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                         </div>
                         <div class="form-group">
                             <label>Renewal Date</label>
-                            <input type="text" name="renewaldate"
-                                class="form-control <?php echo (!empty($renewaldate_err)) ? 'is-invalid' : ''; ?>"
-                                value="<?php echo $renewaldate; ?>">
-                            <span class="invalid-feedback">
-                                <?php echo $renewaldate_err; ?>
-                            </span>                            
+                            
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" placeholder="YYYY-MM-DD" class="form-control" name="renewaldate" <?php echo
+                                    (!empty($renewaldate_err)) ? 'is-invalid' : ''; ?>>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                    <span class="invalid-feedback">
+                                        <?php echo $renewaldate_err; ?>
+                                    </span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                        <div class="container">
-   <div class="row">
-      <div class='col-sm-6'>
-         <div class="form-group">
-            <div class='input-group date' id='datetimepicker1'>
-               <input type='text' class="form-control" />
-               <span class="input-group-addon">
-               <span class="glyphicon glyphicon-calendar"></span>
-               </span>
-            </div>
-         </div>
-      </div>
-      <script type="text/javascript">
-         $(function () {
-             $('#datetimepicker1').datetimepicker();
-         });
-      </script>
-   </div>
-</div>
-                        </div>
+                        
                         <div class="form-group">
                             <label>Payment Portal</label>
                             <input type="text" name="paymentportal"
@@ -285,17 +198,16 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                                 <?php echo $paymentportal_err; ?>
                             </span>
                         </div>
+                        
                         <div class="form-group">
                             <label>Remarks</label>
-                            <input type="text" name="remarks"
-                                class="form-control <?php echo (!empty($remarks_err)) ? 'is-invalid' : ''; ?>"
-                                value="<?php echo $remarks; ?>">
+                            <textarea name="remarks"
+                                class="form-control <?php echo (!empty($remarks_err)) ? 'is-invalid' : ''; ?>">
+                                <?php echo $remarks; ?></textarea>
                             <span class="invalid-feedback">
-                                <?php echo $remarks; ?>
+                                <?php echo $remarks_err; ?>
                             </span>
                         </div>
-
-                        <input type="hidden" name="id" value="<?php echo $id; ?>" />
                         <input type="submit" class="btn btn-primary" value="Submit">
                         <a href="dashboard.php" class="btn btn-secondary ml-2">Cancel</a>
                     </form>

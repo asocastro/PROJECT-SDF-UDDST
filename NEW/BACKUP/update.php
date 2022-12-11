@@ -253,28 +253,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                                 value="<?php echo $renewaldate; ?>">
                             <span class="invalid-feedback">
                                 <?php echo $renewaldate_err; ?>
-                            </span>                            
-                        </div>
-                        <div class="form-group">
-                        <div class="container">
-   <div class="row">
-      <div class='col-sm-6'>
-         <div class="form-group">
-            <div class='input-group date' id='datetimepicker1'>
-               <input type='text' class="form-control" />
-               <span class="input-group-addon">
-               <span class="glyphicon glyphicon-calendar"></span>
-               </span>
-            </div>
-         </div>
-      </div>
-      <script type="text/javascript">
-         $(function () {
-             $('#datetimepicker1').datetimepicker();
-         });
-      </script>
-   </div>
-</div>
+                            </span>
                         </div>
                         <div class="form-group">
                             <label>Payment Portal</label>

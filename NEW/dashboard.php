@@ -32,40 +32,106 @@ $x = $_SESSION["userid"];
             $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
+    <style>
+        body {
+            background: #Fbf3e4 !important;
+            font-family: 'Muli', sans-serif;
+        }
+
+        h1 {
+            color: #004d8f;
+            padding-top: 3rem;
+            padding-bottom: 2rem;
+            font-weight: bold;
+        }
+
+        h2 {
+            
+            color: #000;
+        }
+
+        a {
+            color: #004d8f;
+        }
+
+        p {
+            color: #000;
+        }
+
+        a:hover {
+            color: #004d8f;
+            text-decoration: none;
+            text-shadow: 0 0 5px #004d8f50;
+        }
+
+        .form-control:focus {
+            color: #000;
+            background-color: #fff;
+            border: 2px solid #004d8f;
+            outline: 0;
+            box-shadow: none;
+        }
+
+        .btn {
+            background: #004d8f;
+            border: #004d8f;
+            
+        }
+
+        .btn:hover {
+            background: #004d8f;
+            border: #004d8f;
+        }
+
+        tr {
+            background: #FFFFFF;
+        }
+    </style>
 </head>
 
 <body>
+
     <div class="wrapper">
-        <div class="container-fluid">
+        
             <div class="row">
                 <div class="col-md-12">
-                    <div class="mt-5 mb-1 clearfix">
-                        <h3>Hi,
-                            <?php echo htmlspecialchars($_SESSION["username"]); ?>!
-                            <a href="logout.php" class="btn btn-warning pull-right"><i class="fa fa-plus">
-                                </i> Logout</a>
-                        </h3>
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mt-5 mb-1 ">
+                                <h2 style="font-weight: bold;">Hi,
+                                    <?php echo htmlspecialchars($_SESSION["username"]); ?>!
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mt-5 mb-1 ">
+                                <a href="logout.php" class="btn btn-success pull-right" style="color=#FFFFFF">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mt-5 mb-3 clearfix">
-                        <h2 class="pull-left">Subscription Details</h2>
-                        <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add
-                            Subscription Tracker</a>
+
+                    <div class="mt-2 mb-2 clearfix">
+                        <h3 class="pull-left">Subscription Details</h3>
+                        <a href="create.php" class="btn btn-success pull-right">
+                            <i class="fa fa-plus"></i> TRACKER</a>
                     </div>
                 </div>
             </div>
-        </div>
+        
     </div>
 
 
     <div class="container">
         <?php
         //$orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"]:"category";
-        if(!empty($_GET["orderby"])=="category"){
-            $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"]:"category";
-        }else if(!empty($_GET["orderby"])=="amount"){
-            $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"]:"amount";
-        }else if(!empty($_GET["orderby"])=="renewaldate"){
-            $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"]:"renewaldate";
+        if (!empty($_GET["orderby"]) == "category") {
+            $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"] : "category";
+        } else if (!empty($_GET["orderby"]) == "amount") {
+            $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"] : "amount";
+        } else if (!empty($_GET["orderby"]) == "renewaldate") {
+            $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"] : "renewaldate";
         }
         $order = !empty($_GET["order"]) ? $_GET["order"] : "asc";
         //$orderAMT = !empty($_GET["orderby"]) ? $_GET["orderby"] : "amount";
@@ -106,51 +172,51 @@ $x = $_SESSION["userid"];
                     <th>Remarks</th>
                     <th>Actions</th>
 
-                    
+
                 </tr>
             </thead>
             <tbody>
 
                 <?php
-                    while ($row = mysqli_fetch_assoc($result)) {
+                while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                 <tr>
-                    <td>
+                    <td class="table-light">
                         <?php echo $row['id']; ?>
                     </td>
-                    <td>
+                    <td class="table-light">
                         <?php echo $row['category']; ?>
                     </td>
-                    <td>
+                    <td class="table-light">
                         <?php echo $row['subscription']; ?>
                     </td>
-                    <td>
+                    <td class="table-light">
                         <?php echo $row['serviceprovider']; ?>
                     </td>
-                    <td>
+                    <td class="table-light">
                         <?php echo $row['amount']; ?>
                     </td>
-                    <td>
+                    <td class="table-light">
                         <?php echo $row['renewaldate']; ?>
                     </td>
-                    <td>
+                    <td class="table-light">
                         <?php echo $row['paymentportal']; ?>
                     </td>
-                    <td>
+                    <td class="table-light">
                         <?php echo $row['remarks']; ?>
                     </td>
-                    <td>
-                    <?php
-                        echo '<a href="read.php?id=' . $row['id'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
-                        echo '<a href="update.php?id=' . $row['id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
-                        echo '<a href="delete.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
-                    ?>
+                    <td class="table-light">
+                        <?php
+                    echo '<a href="read.php?id=' . $row['id'] . '" class="mr-3" title="View Record" data-toggle="tooltip"><span class="fa fa-eye"></span></a>';
+                    echo '<a href="update.php?id=' . $row['id'] . '" class="mr-3" title="Update Record" data-toggle="tooltip"><span class="fa fa-pencil"></span></a>';
+                    echo '<a href="delete.php?id=' . $row['id'] . '" title="Delete Record" data-toggle="tooltip"><span class="fa fa-trash"></span></a>';
+                        ?>
 
                     </td>
 
                 </tr>
                 <?php
-            }?>
+                } ?>
             </tbody>
         </table>
 
@@ -159,7 +225,7 @@ $x = $_SESSION["userid"];
 
 
 
-   
+
 
 </body>
 

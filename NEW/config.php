@@ -1,6 +1,6 @@
 <?php
 
-
+/*
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
@@ -12,14 +12,14 @@ $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 if ($mysqli === false) {
     die("ERROR: Could not connect. " . $mysqli->connect_error);
 }
+*/
 
 
 
-/*
-define('DB_SERVER', '185.27.134.10');
-define('DB_USERNAME', 'epiz_33184146');
-define('DB_PASSWORD', 'BX3Hy6zlCZG');
-define('DB_NAME', 'epiz_33184146_project_sdf');
+define('DB_SERVER', 'sql.freedb.tech');
+define('DB_USERNAME', 'freedb_testt');
+define('DB_PASSWORD', 'GX4x$VCbVhx9#Bt');
+define('DB_NAME', 'freedb_project_sdf');
 
 
 $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
@@ -27,6 +27,6 @@ $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 if ($mysqli === false) {
     die("ERROR: Could not connect. " . $mysqli->connect_error);
 }
-*/
+
 
 

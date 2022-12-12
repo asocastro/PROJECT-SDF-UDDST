@@ -59,10 +59,17 @@ $x = $_SESSION["userid"];
 
     <div class="container">
         <?php
-        $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"] : "category";
+        //$orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"]:"category";
+        if(!empty($_GET["orderby"])=="category"){
+            $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"]:"category";
+        }else if(!empty($_GET["orderby"])=="amount"){
+            $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"]:"amount";
+        }else if(!empty($_GET["orderby"])=="renewaldate"){
+            $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"]:"renewaldate";
+        }
         $order = !empty($_GET["order"]) ? $_GET["order"] : "asc";
-        $orderAMT = !empty($_GET["orderby"]) ? $_GET["orderby"] : "amount";
-        $orderDate = !empty($_GET["orderby"]) ? $_GET["orderby"] : "renewaldate";
+        //$orderAMT = !empty($_GET["orderby"]) ? $_GET["orderby"] : "amount";
+        $orderBy = !empty($_GET["orderby"]) ? $_GET["orderby"] : "renewaldate";
 
 
         $sql = "SELECT * FROM userdata WHERE userid='$x' ORDER BY " . $orderBy . " " . $order;
@@ -77,14 +84,11 @@ $x = $_SESSION["userid"];
         if ($orderBy == "category" && $order == "asc") {
             $categoryOrder = "desc";
         }
-
         if ($orderBy == "amount" && $order == "asc") {
             $amountOrder = "desc";
         }
         if ($orderBy == "renewaldate" && $order == "asc") {
-            $categoryOrder = "desc";
-        }else{
-            $categoryOrder = "asc";
+            $renewaldateOrder = "desc";
         }
 
 

@@ -47,7 +47,7 @@ $x = $_SESSION["userid"];
 
         h2 {
             
-            color: #000;
+            color: #004d8f;
         }
 
         a {
@@ -113,7 +113,7 @@ $x = $_SESSION["userid"];
                     </div>
 
                     <div class="mt-2 mb-2 clearfix">
-                        <h3 class="pull-left">Subscription Details</h3>
+                        <h3 class="pull-left" style="color: #004d8f;">Subscription Details</h3>
                         <a href="create.php" class="btn btn-success pull-right">
                             <i class="fa fa-plus"></i> TRACKER</a>
                     </div>
@@ -216,7 +216,9 @@ $x = $_SESSION["userid"];
 
                 </tr>
                 <?php
-                } ?>
+            }
+            ?>
+                
             </tbody>
         </table>
 

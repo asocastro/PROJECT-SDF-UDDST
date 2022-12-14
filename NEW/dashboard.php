@@ -162,7 +162,7 @@ $x = $_SESSION["userid"];
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    
                     <th><a href="?orderby=category&order=<?php echo $categoryOrder; ?>">Category</a></th>
                     <th>Subscription</a></th>
                     <th>Service Provider</a></th>
@@ -181,9 +181,7 @@ $x = $_SESSION["userid"];
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
                 <tr>
-                    <td class="table-light">
-                        <?php echo $row['id']; ?>
-                    </td>
+                    
                     <td class="table-light">
                         <?php echo $row['category']; ?>
                     </td>

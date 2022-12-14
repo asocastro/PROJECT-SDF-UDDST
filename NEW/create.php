@@ -127,7 +127,62 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             width: 600px;
             margin: 0 auto;
         }
+        
+        body {
+            background: #Fbf3e4 !important;
+            font-family: 'Muli', sans-serif;
+        }
+
+        h1 {
+            color: #004d8f;
+            padding-top: 3rem;
+            padding-bottom: 2rem;
+            font-weight: bold;
+        }
+
+        h2 {
+            
+            color: #004d8f;
+        }
+
+        a {
+            color: #004d8f;
+        }
+
+        p {
+            color: #000;
+        }
+
+        a:hover {
+            color: #004d8f;
+            text-decoration: none;
+            text-shadow: 0 0 5px #004d8f50;
+        }
+
+        .form-control:focus {
+            color: #000;
+            background-color: #fff;
+            border: 2px solid #004d8f;
+            outline: 0;
+            box-shadow: none;
+        }
+
+        .btn {
+            background: #004d8f;
+            border: #004d8f;
+            
+        }
+
+        .btn:hover {
+            background: #004d8f;
+            border: #004d8f;
+        }
+
+        tr {
+            background: #FFFFFF;
+        }
     </style>
+    
 </head>
 
 <body>
@@ -178,7 +233,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <label>Renewal Date</label>
                             
                             <div class="input-group date" data-provide="datepicker">
-                                <input type="text" placeholder="YYYY-MM-DD" class="form-control" name="renewaldate" <?php echo
+                                <input type="date" placeholder="YYYY-MM-DD" class="form-control" name="renewaldate" <?php echo
                                     (!empty($renewaldate_err)) ? 'is-invalid' : ''; ?>>
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>

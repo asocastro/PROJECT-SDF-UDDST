@@ -200,6 +200,64 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
             margin: 0 auto;
         }
     </style>
+    <style>
+        body {
+            background: #Fbf3e4 !important;
+            font-family: 'Muli', sans-serif;
+        }
+
+        h1 {
+            color: #004d8f;
+            padding-top: 3rem;
+            padding-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        h2 {
+            
+            color: #004d8f;
+        }
+
+        a {
+            color: #004d8f;
+        }
+        label{
+            color: #004d8f;
+            font-weight: bold;
+        }
+        p {
+            color: #000;
+
+        }
+
+        a:hover {
+            color: #004d8f;
+            text-decoration: none;
+            text-shadow: 0 0 5px #004d8f50;
+        }
+
+        .form-control:focus {
+            color: #000;
+            background-color: #fff;
+            border: 2px solid #004d8f;
+            outline: 0;
+            box-shadow: none;
+        }
+
+        .btn {
+            background: #004d8f;
+            border: #004d8f;
+            
+        }
+
+        .btn:hover {
+            background: #004d8f;
+            border: #004d8f;
+        }
+
+        tr {
+            background: #FFFFFF;
+        }</style>
 </head>
 
 <body>
@@ -248,7 +306,7 @@ if (isset($_POST["id"]) && !empty($_POST["id"])) {
                         </div>
                         <div class="form-group">
                             <label>Renewal Date</label>
-                            <input type="text" name="renewaldate"
+                            <input type="date" name="renewaldate"
                                 class="form-control <?php echo (!empty($renewaldate_err)) ? 'is-invalid' : ''; ?>"
                                 value="<?php echo $renewaldate; ?>">
                             <span class="invalid-feedback">

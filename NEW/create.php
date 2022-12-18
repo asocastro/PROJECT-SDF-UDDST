@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate serviceprovider
     $input_serviceprovider = trim($_POST["serviceprovider"]);
     if (empty($input_serviceprovider)) {
-        $serviceprovider_err = "Please enter a serviceprovider.";
+        $serviceprovider_err = "Please enter a service provider.";
     } else {
         $serviceprovider = $input_serviceprovider;
     }
@@ -191,7 +191,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="mt-5">Create Record</h2>
-                    <p>Please fill this form and submit to add employee record to the database.</p>
+                    <p>Please fill this form and submit to add user record to the database.</p>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                         <div class="form-group">
                             <label>Category</label>

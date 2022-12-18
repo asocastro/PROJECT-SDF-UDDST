@@ -106,14 +106,14 @@ $x = $_SESSION["userid"];
                         </div>
                         <div class="col-lg-6">
                             <div class="mt-5 mb-1 ">
-                                <a href="logout.php" class="btn btn-success pull-right" style="color=#FFFFFF">
+                                <a href="logout.php" class="btn btn-success pull-right" style="color:#FFFFFF">
                                 <i class="fa fa-sign-out" aria-hidden="true"></i> LOGOUT</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="mt-2 mb-2 clearfix">
-                        <h3 class="pull-left" style="color: #004d8f;">Subscription Details</h3>
+                        <h3 class="pull-left" style="color: #004d8f">Subscription Details</h3>
                         <a href="create.php" class="btn btn-success pull-right">
                             <i class="fa fa-plus"></i> TRACKER</a>
                     </div>
